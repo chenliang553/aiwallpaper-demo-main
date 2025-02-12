@@ -4,11 +4,12 @@ CREATE TABLE wallpapers (
     img_description TEXT,
     img_size VARCHAR(255),
     img_url TEXT,
-    llm_name VARCHAR(100),
-    llm_params JSON,
+    llm_name VARCHAR(100), -- 存储调用的模型名称，现在是dell-e
+    llm_params JSON, -- 大模型的参数
     created_at timestamptz
 );
 
+#用户表
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
@@ -17,6 +18,7 @@ CREATE TABLE users (
     created_at timestamptz
 );
 
+#管理订单的
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
     order_no VARCHAR(255) UNIQUE NOT NULL,

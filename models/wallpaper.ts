@@ -23,6 +23,7 @@ export async function insertWallpaper(wallpaper: Wallpaper) {
   return res;
 }
 
+//涉及到网络请求都是异步接口
 export async function getWallpapers(
   page: number,
   limit: number
@@ -44,11 +45,13 @@ export async function getWallpapers(
     return undefined;
   }
 
-  const { rows } = res;
+  const { rows } = res; //rows是数据库查询的结果。
   let wallpapers: Wallpaper[] = [];
 
+  //把res结果转换成Wallpaper对象的数组。
   rows.forEach((row) => {
     const wallpaper: Wallpaper = {
+      //把数据库的列名转换成Wallpaper对象的属性。  就是一堆set操作
       id: row.id,
       user_email: row.user_email,
       img_description: row.img_description,

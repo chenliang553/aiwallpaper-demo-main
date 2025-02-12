@@ -29,6 +29,7 @@ export default function ({ setWallpapers }: Props) {
 
     if (data) {
       console.log("new wallpaper:", data);
+      // ...wallpapers是什么意思。数组展开的意思，把最新的data放在最前面，旧数据放在后面，
       setWallpapers((wallpapers: Wallpaper[]) => [data, ...wallpapers]);
     }
   };
