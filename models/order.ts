@@ -51,7 +51,7 @@ export async function updateOrderStatus(
 ) {
   const db = getDb();
   const res = await db.query(
-    `UPDATE orders SET order_status=$1, paied_at=$2 WHERE order_no=$3`,
+    `UPDATE orders SET order_status=$1, paied_at=$2 WHERE order_no=$3`, //这里根据订单号去更新或者session_id都可以，只要是唯一的就行
     [order_status, paied_at, order_no]
   );
 

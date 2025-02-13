@@ -28,6 +28,7 @@ export async function getUserCredits(user_email: string): Promise<UserCredits> {
     let one_time_credits = 0;
     let total_credits = 0;
 
+    //遍历一个用户所有有效的订单。
     orders.forEach((order: Order) => {
       if (order.plan === "monthly") {
         monthly_credits += order.credits;

@@ -13,6 +13,7 @@ export default function () {
       method: "POST",
     });
 
+    //设置了credis就让所有credis生效，自然就用到 useState
     const { code, message, data } = await response.json();
     console.log("userinfo", data);
     if (data && data.credits) {

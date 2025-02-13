@@ -2,6 +2,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 export default function () {
   const handleCheckout = async () => {
+    //这里写死了。
     const params = {
       amount: 990,
       credits: 50,
@@ -18,16 +19,18 @@ export default function () {
 
     const { code, message, data } = await response.json();
     if (!data) {
+      // 如果返回的数据为空，则不执行后续操作。
       return;
     }
     const { public_key, session_id } = data;
     console.log("checkout res", public_key, session_id);
 
+    //loadStripe加载公钥，然后redirectToCheckout 跳转。跳转的逻辑在调stripe的时候就写了
     const stripe = await loadStripe(public_key);
     if (!stripe) {
       return;
     }
-
+    //拿到跳转的结果。
     const result = await stripe.redirectToCheckout({
       sessionId: session_id,
     });

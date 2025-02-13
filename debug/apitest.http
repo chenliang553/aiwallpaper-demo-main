@@ -19,7 +19,7 @@ POST {{baseUri}}/checkout
 Content-Type: application/json
 
 {
-    "amount": 990,
-    "plan": "subscribe",
-    "credits": 50
+    "amount": 990, //付款金额，这里一般用分，网站上是9.9美元，这里就是990
+    "plan": "subscribe", //付费策略，这里是订阅模式
+    "credits": 50 //送的积分
 }
